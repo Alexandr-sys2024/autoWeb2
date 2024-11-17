@@ -1,32 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}
-Account
+Home
 {% endblock %}
 
 {% block content %}
-<h1>Профиль пользователя</h1>
-<form method="POST" action="{{ url_for('account') }}">
-    {{ form.hidden_tag() }}
-    <div>
-        {{ form.username.label }}<br>
-        {{ form.username(size=32) }}
-    </div>
-    <div>
-        {{ form.email.label }}<br>
-        {{ form.email(size=32) }}
-    </div>
-    <div>
-        {{ form.password.label }}<br>
-        {{ form.password(size=32) }}
-        <small>Оставьте пустым, если не хотите менять пароль</small>
-    </div>
-    <div>
-        {{ form.confirm_password.label }}<br>
-        {{ form.confirm_password(size=32) }}
-    </div>
-    <div>
-        {{ form.submit() }}
-    </div>
-</form>
+    <h1>Добро пожаловать на домашнюю страницу!</h1>
 {% endblock %}

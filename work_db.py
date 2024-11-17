@@ -3,7 +3,7 @@ import sqlite3
 import cursor
 
 # Подключаемся к базе данных
-#conn = sqlite3.connect(r'C:\Users\Алекс\Documents\GitHub\autoWeb\instance\site.db')
+#conn = sqlite3.connect(r'C:\Users\Алекс\Documents\GitHub\autoWeb2\instance\site.db')
 #cursor = conn.cursor()
 
 # Выполняем SQL-запрос
@@ -66,7 +66,7 @@ import sqlite3
 from tabulate import tabulate
 
 # Подключаемся к базе данных
-conn = sqlite3.connect(r'C:\Users\Алекс\Documents\GitHub\autoWeb\instance\site.db')
+conn = sqlite3.connect(r'C:\Users\Алекс\Documents\GitHub\autoWeb2\instance\site.db')
 cursor = conn.cursor()
 
 # Выполняем SQL-запрос для получения данных из таблицы user

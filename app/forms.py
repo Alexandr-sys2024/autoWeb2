@@ -49,4 +49,4 @@ class UpdateAccountForm(FlaskForm):
         if email.data != current_user.email:
             email_check = User.query.filter_by(email=email.data).first()
             if email_check:
-                raise ValidationError('Такая почта уже используется'
+                raise ValidationError('Такая почта уже используется')

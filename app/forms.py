@@ -15,12 +15,12 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError('Такое имя уже существует')
+            raise ValidationError('Такое имя уже существует. Пожалуйста, выберите другое.')
 
     def validate_email(self, email):
         email = User.query.filter_by(email=email.data).first()
         if email:
-            raise ValidationError('Такая почта уже используется')
+            raise ValidationError('Такой email уже зарегистрирован. Используйте другой.')
 
 
 class LoginForm(FlaskForm):
@@ -29,11 +29,11 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Запомни меня')
     submit = SubmitField('Login')
 
-# Добавляем форму для редактирования профиля
+# Форма для редактирования профиля
 class UpdateAccountForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=35)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('New Password', validators=[Length(min=6, max=60, message="Enter a new password")])
+    password = PasswordField('New Password', validators=[Length(min=6, max=60, message="Введите новый пароль")])
     confirm_password = PasswordField('Confirm New Password', validators=[EqualTo('password')])
     submit = SubmitField('Update')
 
@@ -42,11 +42,11 @@ class UpdateAccountForm(FlaskForm):
         if username.data != current_user.username:
             user = User.query.filter_by(username=username.data).first()
             if user:
-                raise ValidationError('Такое имя уже существует')
+                raise ValidationError('Такое имя уже существует. Пожалуйста, выберите другое.')
 
     # Проверка уникальности нового email
     def validate_email(self, email):
         if email.data != current_user.email:
             email_check = User.query.filter_by(email=email.data).first()
             if email_check:
-                raise ValidationError('Такая почта уже используется')
+                raise ValidationError('Такой email уже используется. Выберите другой.')
